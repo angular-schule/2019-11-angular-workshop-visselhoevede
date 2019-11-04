@@ -35,6 +35,14 @@ Die gesamte Installation wird rund 30 Minuten dauern.
 5. optional: **Git** (und ggf. ein grafischer Client wie SourceTree oder GitExtensions)
 
 
+## 🎮 Playgrounds
+
+Im Laufe des Kurses werde ich euch immer wieder vorbereitete Projekte ("Playgrounds") zur Verfügung stellen.  
+Du kannst dir entweder  
+* das Repo per git herunterladen und den Ordner `responsive-layout-playground` erforschen<br><br>**oder**<br><br>  
+* den Ordner als ZIP-Datei herunterladen: [responsive-layout-playground.zip](https://github.com/angular-schule/2019-11-angular-workshop-visselhoevede/files/3802394/responsive-layout-playground.zip)
+
+
 ## Proxy?
 
 Für die Proxykonfiguration im Unternehmensnetz sind gesonderte Einstellungen nötig.
