@@ -10,6 +10,8 @@
   "author": "Johannes Hoppe",
   "license": "None",
   "dependencies": {
-    "lite-server": "^2.5.4"
+    "font-awesome": "^4.7.0",
+    "lite-server": "^2.5.4",
+    "roboto-fontface": "^0.10.0"
   }
 }
