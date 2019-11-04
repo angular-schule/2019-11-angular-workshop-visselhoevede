@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>HTML5 Minimum</title>
 
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="node_modules/roboto-fontface/css/roboto/roboto-fontface.css">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="style.css">
@@ -11,11 +12,24 @@
   </head>
   <body>
 
-    <h1>Hallo Welt! 🤪😍</h1>
+    <div class="jumbotron text-center">
+      <h1>Hallo Welt! 🤪😍</h1>
 
-    <p>
-      Dies ist eine <a href="https://angular.schule">minimale</a> HTML5 Seite
-    </p>
+      <p>
+        Dies ist eine <a href="https://angular.schule">minimale</a> HTML5 Seite
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-4">Ich bin Zeile 1</div>
+        <div class="col-sm-6 col-md-4">Ich bin Zeile 2</div>
+        <div class="         col-md-4 d-none d-md-block">Ich bin Zeile 3</div>
+      </div>
+    </div>
+
+    <br>
+    <hr>
 
     <i class="fa fa-user-circle"></i>
     <i class="fa fa-html5"></i>
@@ -26,4 +40,4 @@
     </ul>
 
   </body>
-</html> 
+</html>
