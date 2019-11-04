@@ -8,3 +8,7 @@ ul > li {
   width: 20vw;
   border: 1px solid red;
 }
+
+.fa {
+  font-size: 3em;
+}

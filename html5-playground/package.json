@@ -1,0 +1,15 @@
+{
+  "name": "html5-playground",
+  "version": "1.0.0",
+  "description": "my playground",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "author": "Johannes Hoppe",
+  "license": "None",
+  "dependencies": {
+    "lite-server": "^2.5.4"
+  }
+}
