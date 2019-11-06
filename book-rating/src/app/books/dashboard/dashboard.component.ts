@@ -38,6 +38,11 @@ export class DashboardComponent implements OnInit {
   }
 
   doRateUp(book: Book) {
+    // Evil code!
+    // const ratedBook = {
+    //   ...book,
+    //   rating: book.rating + 1
+    // };
     const ratedBook = this.br.rateUp(book);
     this.updateAndSortList(ratedBook);
   }
