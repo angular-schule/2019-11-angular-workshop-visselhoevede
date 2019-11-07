@@ -20,19 +20,22 @@ export class DashboardComponent implements OnInit {
         isbn: '000',
         title: 'Angular',
         description: 'Tolles Buch',
-        rating: 5
+        rating: 5,
+        published: new Date('2019-11-07')
       },
       {
         isbn: '111',
         title: 'AngularJS',
         description: 'Altes Buch',
-        rating: 3
+        rating: 3,
+        published: new Date('2019-09-01')
       },
       {
         isbn: '222',
         title: 'React',
         description: 'Meh...',
-        rating: 1
+        rating: 1,
+        published: new Date('2018-02-07')
       }
     ];
   }
@@ -56,5 +59,9 @@ export class DashboardComponent implements OnInit {
     this.books = this.books
       .map(book => book.isbn === ratedBook.isbn ? ratedBook : book)
       .sort((a, b) => b.rating - a.rating);
+  }
+
+  doCreate(newBook: Book) {
+    this.books = [...this.books, newBook];
   }
 }

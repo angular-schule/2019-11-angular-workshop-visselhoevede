@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateBookComponent } from './create-book/create-book.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    BooksRoutingModule
+    BooksRoutingModule,
+    DatePickerModule
   ],
   exports: [
     DashboardComponent

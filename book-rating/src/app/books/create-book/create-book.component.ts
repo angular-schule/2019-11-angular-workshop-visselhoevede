@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Book } from '../shared/book';
 
 @Component({
   selector: 'br-create-book',
@@ -8,17 +9,32 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class CreateBookComponent {
 
+  @Output()
+  create = new EventEmitter<Book>();
+
   bookForm = new FormGroup({
     isbn: new FormControl('', [
       Validators.required,
       Validators.minLength(3)
     ]),
     title: new FormControl('', Validators.required),
-    description: new FormControl('')
+    description: new FormControl(''),
+    published: new FormControl('', Validators.required),
   });
 
   isInvalid(name: string) {
     const control = this.bookForm.get(name);
     return control.touched && control.invalid;
+  }
+
+  submitForm() {
+    const newBook = {
+      ...this.bookForm.value,
+      rating: 1
+    };
+
+    this.create.emit(newBook);
+
+    this.bookForm.reset();
   }
 }
