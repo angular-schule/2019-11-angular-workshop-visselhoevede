@@ -3,10 +3,11 @@
   <div class="form-group">
     <label for="isbn">ISBN</label>
     <input formControlName="isbn" type="text" class="form-control" id="isbn">
-  </div>
 
-  <div class="feedback-error" *ngIf="false">
-    Bitte geben Sie eine ISBN an.
+    <div class="feedback-error hidden"
+      [ngClass]="{ show: isInvalid('isbn') }">
+      Bitte geben Sie eine ISBN an.
+    </div>
   </div>
 
   <div class="form-group">
