@@ -4,4 +4,5 @@ export interface Book {
   description: string;
   rating: number;
   published: Date | string;
+  firstThumbnailUrl: string;
 }
