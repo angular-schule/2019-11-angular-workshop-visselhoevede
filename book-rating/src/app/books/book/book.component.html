@@ -6,7 +6,7 @@
       <h2>
         {{ book.title }}
         <span class="badge badge-secondary">
-            ⭐
+          <ng-container *ngFor="let s of [].constructor(book.rating)">⭐️</ng-container>
         </span>
       </h2>
       <h6>{{ book.published | date:'dd.MM.yyyy' }}</h6>
