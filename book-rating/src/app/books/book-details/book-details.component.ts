@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'br-book-details',
@@ -13,7 +14,14 @@ export class BookDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(paramMap => this.isbn = paramMap.get('isbn'));
+    this.route.paramMap
+      .subscribe(paramMap => this.isbn = paramMap.get('isbn'));
+
+    of('😀', '😎', '😘', '💩').subscribe(
+      data => console.log(data),
+      err => console.error(err),
+      () => console.log('COMPLETE! 👍')
+    );
   }
 
 }
