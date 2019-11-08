@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of, from, timer, interval, Subscription, Observable } from 'rxjs';
-import { take, map, filter, reduce, mergeMap, switchMap, share, shareReplay, catchError } from 'rxjs/operators';
+import { take, map, filter, reduce, mergeMap, switchMap, share, shareReplay, catchError, retry } from 'rxjs/operators';
 import { Book } from '../shared/book';
 import { BookStoreService } from '../shared/book-store.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -17,14 +17,16 @@ export class BookDetailsComponent {
 
   book$ = this.route.paramMap.pipe(
     map(paramMap => paramMap.get('isbn')),
-    switchMap(isbn => this.bs.getSingle(isbn)),
-    catchError((e: HttpErrorResponse) => of({
-      title: 'Error load ' + e.url,
-      isbn: '00',
-      description: 'Da lief was schief!',
-      rating: 1,
-      published: undefined
-    }))
+    switchMap(isbn => this.bs.getSingle(isbn).pipe(
+      retry(3),
+      catchError((e: HttpErrorResponse) => of({
+        title: 'Error load ' + e.url,
+        isbn: '00',
+        description: 'Da lief was schief!',
+        rating: 1,
+        published: undefined
+      }))
+    ))
   );
 
   constructor(private route: ActivatedRoute, private bs: BookStoreService) { }
