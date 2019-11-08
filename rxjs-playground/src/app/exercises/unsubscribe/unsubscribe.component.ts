@@ -9,10 +9,12 @@ import { takeWhile, takeUntil } from 'rxjs/operators';
 export class UnsubscribeComponent implements OnInit, OnDestroy {
 
   logStream$ = new Subject<string | number>();
-
+  destroyed = false;
 
   ngOnInit() {
-    const interval$ = timer(0, 1000);
+    const interval$ = timer(0, 1000).pipe(
+      takeWhile(() => !this.destroyed)
+    );
 
     interval$.subscribe(
       msg => this.log(msg),
@@ -22,7 +24,7 @@ export class UnsubscribeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-
+    this.destroyed = true;
   }
 
 
