@@ -30,13 +30,13 @@ export class BookDetailsComponent implements OnInit {
       subscriber.next('🤪');
       subscriber.next('🍔');
 
-      setTimeout(() => { console.log('hier kommt 8balls'), subscriber.next('🎱') }, 1000);
+      setTimeout(() => subscriber.next('🎱'), 1000);
       setTimeout(() => subscriber.error('🤬'), 1000);
     });
 
     const subscription = obervable.subscribe(observer);
 
-    subscription.unsubscribe();
+    setTimeout(() => subscription.unsubscribe(), 2000);
   }
 
 
