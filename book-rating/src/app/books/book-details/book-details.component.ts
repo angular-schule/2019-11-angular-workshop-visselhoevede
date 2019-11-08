@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of, timer, interval, Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'br-book-details',
@@ -28,7 +29,11 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
 
     //subscription.unsubscribe();
 
-    this.subscription = interval(1000).subscribe(observer);
+    this.subscription = interval(1000)
+      .pipe(
+        take(10)
+      )
+      .subscribe(observer);
   }
 
   // fixes leak!
