@@ -4,6 +4,7 @@ import { catchError, map, concatMap } from 'rxjs/operators';
 import { EMPTY, of } from 'rxjs';
 
 import * as BookActions from '../actions/book.actions';
+import { BookStoreService } from '../shared/book-store.service';
 
 
 
@@ -13,15 +14,12 @@ export class BookEffects {
   loadBooks$ = createEffect(() => this.actions$.pipe(
     ofType(BookActions.loadBooks),
     concatMap(() =>
-      /** An EMPTY observable only emits completion. Replace with your own observable API request */
-      EMPTY.pipe(
+      this.bs.getAll().pipe(
         map(data => BookActions.loadBooksSuccess({ data })),
         catchError(error => of(BookActions.loadBooksFailure({ error }))))
     )
   ));
 
-
-
-  constructor(private actions$: Actions) {}
+  constructor(private actions$: Actions, private bs: BookStoreService) {}
 
 }

@@ -4,11 +4,13 @@
 
 <hr class="mb-4 mt-4">
 
+<h6 *ngIf="loading$ | async">Lade Bücher...</h6>
+
 <br-book
-  *ngFor="let b of books"
+  *ngFor="let b of books$ | async"
   [book]="b"
   (rateUp)="doRateUp($event)"
   (rateDown)="doRateDown($event)"
 ></br-book>
 
-Anzahl der Bücher: {{ books.length }}
+Anzahl der Bücher: {{ (books$ | async).length }}
