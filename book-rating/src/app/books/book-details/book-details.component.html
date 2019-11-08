@@ -1,4 +1,7 @@
-<h2>{{ book?.title }}</h2>
+<h2>{{ (book$ | async)?.title }}</h2>
+
+<p>{{ (book$ | async)?.description }}</p>
+
 
 <a routerLink="/book/222">Got to Book 222</a><br>
 <a routerLink="/book/9783864904523">Got to Book 9783864904523</a><br>

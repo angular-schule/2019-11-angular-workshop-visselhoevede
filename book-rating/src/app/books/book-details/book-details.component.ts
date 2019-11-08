@@ -10,21 +10,12 @@ import { BookStoreService } from '../shared/book-store.service';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss']
 })
-export class BookDetailsComponent implements OnInit {
+export class BookDetailsComponent {
 
-  book: Book;
+  book$ = this.route.paramMap.pipe(
+    map(paramMap => paramMap.get('isbn')),
+    switchMap(isbn => this.bs.getSingle(isbn))
+  );
 
   constructor(private route: ActivatedRoute, private bs: BookStoreService) { }
-
-  ngOnInit() {
-    this.route.paramMap.pipe(
-      map(paramMap => paramMap.get('isbn')),
-      switchMap(isbn => this.bs.getSingle(isbn))
-    ).subscribe(
-      book => this.book = book
-    );
-
-  }
-
-
 }
