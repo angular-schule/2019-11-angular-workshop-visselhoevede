@@ -17,11 +17,13 @@ export class BookDetailsComponent implements OnInit {
     this.route.paramMap
       .subscribe(paramMap => this.isbn = paramMap.get('isbn'));
 
-    of('😀', '😎', '😘', '💩').subscribe(
-      data => console.log(data),
-      err => console.error(err),
-      () => console.log('COMPLETE! 👍')
-    );
+    const observer = {
+      next: data => console.log(data),
+      error: err => console.error(err),
+      complete:  () => console.log('COMPLETE! 👍')
+    };
+
+    of('😀', '😎', '😘', '💩').subscribe(observer);
   }
 
 }
