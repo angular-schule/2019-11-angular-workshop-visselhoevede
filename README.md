@@ -39,8 +39,9 @@ Die gesamte Installation wird rund 30 Minuten dauern.
 
 Im Laufe des Kurses werde ich euch immer wieder vorbereitete Projekte ("Playgrounds") zur Verfügung stellen.  
 Du kannst dir entweder  
-* das Repo per git herunterladen und den Ordner `responsive-layout-playground` erforschen<br><br>**oder**<br><br>  
-* den Ordner als ZIP-Datei herunterladen: [responsive-layout-playground.zip](https://github.com/angular-schule/2019-11-angular-workshop-visselhoevede/files/3802394/responsive-layout-playground.zip)
+* das Repo per git herunterladen und die Ordner `responsive-layout-playground` und `rxjs-playground` erforschen<br><br>**oder**<br><br>  
+* die Ordner als ZIP-Datei herunterladen: [responsive-layout-playground.zip](https://github.com/angular-schule/2019-11-angular-workshop-visselhoevede/files/3802394/responsive-layout-playground.zip) und [rxjs-playground.zip](https://github.com/angular-schule/2019-11-angular-workshop-visselhoevede/files/3823526/rxjs-playground.zip)
+
 
 
 ## Proxy?
