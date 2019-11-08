@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of, timer, interval, Subscription, Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { of, from, timer, interval, Subscription, Observable } from 'rxjs';
+import { take, map } from 'rxjs/operators';
 
 @Component({
   selector: 'br-book-details',
@@ -24,17 +24,15 @@ export class BookDetailsComponent implements OnInit {
       complete:  () => console.log('COMPLETE! 👍')
     };
 
-    const obervable = new Observable(subscriber => {
+    // TODO
+    // 1. mal 10
+    // 2. nur Daten durchlassen die größer als 30
+    // 3. die Summe aus allen Zahlen
+    // 4. zeige so viele Herzen an, wie die Summe groß war (Knobeln)
+    const subscription = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).pipe(
+      map(x => x * 10)
 
-      subscriber.next('😇');
-      subscriber.next('🤪');
-      subscriber.next('🍔');
-
-      setTimeout(() => subscriber.next('🎱'), 1000);
-      setTimeout(() => subscriber.error('🤬'), 1000);
-    });
-
-    const subscription = obervable.subscribe(observer);
+    ).subscribe(observer);
 
     setTimeout(() => subscription.unsubscribe(), 2000);
   }
