@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
+import { of, timer, interval } from 'rxjs';
 
 @Component({
   selector: 'br-book-details',
@@ -23,7 +23,11 @@ export class BookDetailsComponent implements OnInit {
       complete:  () => console.log('COMPLETE! 👍')
     };
 
-    of('😀', '😎', '😘', '💩').subscribe(observer);
+    //const subscription = of('😀', '😎', '😘', '💩').subscribe(observer);
+
+    //subscription.unsubscribe();
+
+    interval(1000).subscribe(observer);
   }
 
 }
