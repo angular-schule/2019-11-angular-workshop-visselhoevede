@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of, timer, interval } from 'rxjs';
+import { of, timer, interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'br-book-details',
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss']
 })
-export class BookDetailsComponent implements OnInit {
+export class BookDetailsComponent implements OnInit, OnDestroy {
 
   isbn: string;
+  subscription: Subscription;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -27,7 +28,15 @@ export class BookDetailsComponent implements OnInit {
 
     //subscription.unsubscribe();
 
-    interval(1000).subscribe(observer);
+    this.subscription = interval(1000).subscribe(observer);
   }
+
+  // fixes leak!
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
 
 }
