@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of, timer, interval, Subscription } from 'rxjs';
+import { of, timer, interval, Subscription, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -8,10 +8,9 @@ import { take } from 'rxjs/operators';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss']
 })
-export class BookDetailsComponent implements OnInit, OnDestroy {
+export class BookDetailsComponent implements OnInit {
 
   isbn: string;
-  subscription: Subscription;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -25,22 +24,19 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
       complete:  () => console.log('COMPLETE! 👍')
     };
 
-    //const subscription = of('😀', '😎', '😘', '💩').subscribe(observer);
+    const obervable = new Observable(subscriber => {
 
-    //subscription.unsubscribe();
+      subscriber.next('😇');
+      subscriber.next('🤪');
+      subscriber.next('🍔');
 
-    this.subscription = interval(1000)
-      .pipe(
-        take(10)
-      )
-      .subscribe(observer);
-  }
+      setTimeout(() => { console.log('hier kommt 8balls'), subscriber.next('🎱') }, 1000);
+      setTimeout(() => subscriber.error('🤬'), 1000);
+    });
 
-  // fixes leak!
-  ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    const subscription = obervable.subscribe(observer);
+
+    subscription.unsubscribe();
   }
 
 
