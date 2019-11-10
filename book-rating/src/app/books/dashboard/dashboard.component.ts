@@ -19,7 +19,7 @@ export class DashboardComponent {
   books$ = this.store.pipe(select(selectBooks));
 
   constructor(private store: Store<State>) {
-    this.store.dispatch(loadBooks());
+    //this.store.dispatch(loadBooks());
   }
 
   doRateUp(book: Book) {
@@ -38,9 +38,9 @@ export class DashboardComponent {
   }
 
   updateAndSortList(ratedBook: Book) {
-    this.books = this.books
-      .map(book => book.isbn === ratedBook.isbn ? ratedBook : book)
-      .sort((a, b) => b.rating - a.rating);
+    // this.books = this.books
+    //   .map(book => book.isbn === ratedBook.isbn ? ratedBook : book)
+    //   .sort((a, b) => b.rating - a.rating);
   }
 
   doCreate(newBook: Book) {

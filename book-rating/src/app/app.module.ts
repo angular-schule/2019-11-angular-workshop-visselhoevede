@@ -6,12 +6,13 @@ import { AppComponent } from './app.component';
 import { BooksModule } from './books/books.module';
 
 import { HttpClientModule } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, Store } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { loadBooks } from './books/actions/book.actions';
 
 @NgModule({
   declarations: [
@@ -35,4 +36,9 @@ import { environment } from '../environments/environment';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(store: Store<{}>) {
+    store.dispatch(loadBooks());
+  }
+}
